@@ -1,2 +1,1 @@
-# Data-Structures
-Contains Data structure and Algorithm related programs in Java.
+Linked List and its basic operation in java
