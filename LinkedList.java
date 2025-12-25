@@ -29,8 +29,7 @@ class Node {
             curr=curr.next;
             i++;
         }
-        Node temp=new Node();
-        temp.data=data;
+        Node temp=createNode(data);
         temp.next=curr.next;
         curr.next=temp;
     }
