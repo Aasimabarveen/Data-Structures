@@ -1,41 +1,49 @@
+
 class Node {
     
     int data;
     Node next;
     
-    public Node createNode(int data){
-        Node temp=new Node();
-       temp.data=data;
-        temp.next=null;
-        return temp; 
+    public Node (int data1){
+        data=data1;
+        next=null;
     }
     
-    public Node insertFirst(int data){
-        return createNode(data);
-    }
+}
+
+public class Main
+{
+    static Node head;
     
-    public void insertLast(int data,Node head){
+   public static Node insertFirst(int data){
+        Node temp=new Node(data);
+        return temp;
+   } 
+   
+    
+    public static void insertLast(int data){
         
         Node curr=head;
         while(curr.next!=null)
             curr=curr.next;
-       curr.next=createNode(data);
+        Node temp=new Node(data);
+       curr.next=temp;
         
     }
     
-    public void insertMiddle(int data,int pos, Node head){
+    public static void insertMiddle(int data,int pos){
         Node curr=head;int i=1;
         while(i<pos-1){
             curr=curr.next;
             i++;
         }
-        Node temp=createNode(data);
+        Node temp=new Node(data);
         temp.next=curr.next;
         curr.next=temp;
     }
-    
-    public void print(Node head){
-    Node temp=head;
+   
+   public static void print(){
+       Node temp=head;
     System.out.print(temp.data);
     while(temp.next!=null)
     {
@@ -45,24 +53,23 @@ class Node {
     }
         
     }
-  
-}
-public class Main
-{
+   
 	public static void main(String[] args) {
 		System.out.println("Linked List:\n Insert first element:5");
-    Node node=new Node();
-    Node head=node.insertFirst(5);
-    node.print(head);
+    
+    head=insertFirst(5);
+    print();
     System.out.println();
-    node.insertLast(11,head);
-    node.print(head);
+    insertLast(11);
+    print();
     System.out.println();
-    node.insertLast(17,head);
-    node.print(head);
+    insertLast(17);
+    print();
     System.out.println();
-    node.insertMiddle(12,3,head);
-    node.print(head);
+    insertMiddle(12,3);
+    print();
+    
+    
     
 	}
 }
