@@ -1,10 +1,3 @@
-/******************************************************************************
-
-                            Online Java Compiler.
-                Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
 
 class Node {
     
@@ -20,7 +13,8 @@ class Node {
 
 public class Main
 {
-    static Node head;
+    static Node head=null;
+    static Node tail=null;
     
    public static Node insertFirst(int data){
         Node temp=new Node(data);
@@ -29,12 +23,12 @@ public class Main
    
     
     public static void insertLast(int data){
-        
-        Node curr=head;
-        while(curr.next!=null)
-            curr=curr.next;
+        if(tail==null)
+        return;
+        Node curr=tail;
         Node temp=new Node(data);
        curr.next=temp;
+       tail=temp;
         
     }
     
@@ -46,7 +40,7 @@ public class Main
         }
         if(curr.next==null)
         {
-            System.out.println("Cant insert at position"+pos);
+            System.out.println("Cant insert at position "+pos);
             return;
         }
         Node temp=new Node(data);
@@ -69,6 +63,7 @@ public class Main
        while(temp.next.next!=null){
            temp=temp.next;
        }
+       tail=temp;
        temp.next=null;
    }
    
@@ -82,7 +77,7 @@ public class Main
         }
         if(curr.next==null)
         {
-            System.out.println("Cant delete at position"+pos);
+            System.out.println("Cant delete at position "+pos);
             return;
         }
         Node temp=curr.next.next;
@@ -92,6 +87,8 @@ public class Main
    }
    
    public static void print(){
+       if(head==null)
+       return;
        Node temp=head;
     System.out.print(temp.data);
     while(temp.next!=null)
@@ -107,6 +104,7 @@ public class Main
 		System.out.println("Linked List:\n Insert first element:5");
     
     head=insertFirst(5);
+    tail=head;
     print();
     insertLast(11);
     print();
